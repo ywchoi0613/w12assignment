@@ -1,14 +1,24 @@
-kumamon []ku;
-void setup(){
+kumamonboy[] ku_boy;
+kumamongirl[] ku_girl;
+kumamon ku;
+void setup(){  //parent를 크게, child를 작게
   size(1600,1200);
-  ku = new kumamon[2];
-  ku[0] = new kumamonboy(6);
-  ku[1] = new kumamongirl(8);
+  ku = new kumamon(8);
+  ku_boy = new kumamonboy[2];
+  ku_girl = new kumamongirl[2];
+  for(int i=0;i<2;i++){
+    ku_boy[i] = new kumamonboy(5);
+    ku_girl[i] = new kumamongirl(5);
+  }
 }
 void draw(){
   background(0,255,255);
-  ku[0].show();
-  ku[1].show();
-  ku[0].baggue();
-  ku[1].mouse();
+  ku.kk();
+  //ku.baggue();
+  for(int i=0;i<2;i++){
+    ku_boy[i].show();
+    //ku_boy[i].baggue();
+    ku_girl[i].show();
+    //ku_girl[i].baggue();
+  }
 }
