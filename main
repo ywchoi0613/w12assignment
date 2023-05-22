@@ -1,0 +1,14 @@
+kumamon []ku;
+void setup(){
+  size(1600,1200);
+  ku = new kumamon[2];
+  ku[0] = new kumamonboy(6);
+  ku[1] = new kumamongirl(8);
+}
+void draw(){
+  background(0,255,255);
+  ku[0].show();
+  ku[1].show();
+  ku[0].baggue();
+  ku[1].mouse();
+}
