@@ -1,6 +1,6 @@
 class kumamon{
-  kumamon(){d=5; x=random(0,width); y=random(0,height); vx=random(-20,20); vy=random(-30,30);}
-  kumamon(int r){d=r; x=random(0,width); y=random(0,height); vx=random(-20,20); vy=random(-30,30);}
+  kumamon(){d=5; x=random(100,width-100); y=random(100,height-100); vx=random(-20,20); vy=random(-30,30);}
+  kumamon(int r){d=r; x=random(100,width-100); y=random(100,height-100); vx=random(-20,20); vy=random(-30,30);}
   int d;
   float x,y,vx,vy;
   void kk(){
@@ -26,7 +26,7 @@ class kumamon{
     ellipse(x+10*d,y-4*d,1.1*d,2.6*d);  //오른쪽눈동자
     ellipse(x,y+7.5*d,15*d,5*d);  //입
   }
-  void baggue(){  //속도 랜덤, 가장자리에서 튕기도록
+  void baggue(){  //속도 랜덤, 가장자리에서 튕기도록 움직임
     x += vx; y += vy;
     if(x<0) vx = -vx;
     if(x>width) vx = -vx;
