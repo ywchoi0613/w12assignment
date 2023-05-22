@@ -1,0 +1,69 @@
+class kumamon{
+  kumamon(){d=5; x=random(0,width); y=random(0,height); vx=random(-20,20); vy=random(-30,30);}
+  kumamon(int r){d=r; x=random(0,width); y=random(0,height); vx=random(-20,20); vy=random(-30,30);}
+  int d;
+  float x,y,vx,vy;
+  void kk(){
+    float k = 8*d;
+    fill(1,1,1);
+    ellipse(x,y,40*d,30*d);  //얼굴
+    circle(x+16*d,y-12*d,k);  //오른쪽귀
+    circle(x-16*d,y-12*d,k);  //왼쪽귀
+    fill(255,0,0);
+    circle(x+16*d,y+5*d,k+d/2);  //오른쪽볼
+    circle(x-16*d,y+5*d,k+d/2);  //왼쪽볼
+    fill(255);
+    circle(x-10*d,y-4*d,k);  //왼쪽눈
+    circle(x+10*d,y-4*d,k);  //오른쪽눈
+    ellipse(x,y+5.5*d,20*d,15*d);  //흰색입
+    circle(x+16*d,y-12*d,k*0.5+0.5*d);  //안쪽귀(오른쪽)
+    circle(x-16*d,y-12*d,k*0.5+0.5*d);  //안쪽귀(왼쪽)
+    curve(x-15*d,y,x-13*d,y-10*d,x-8*d,y-10*d,x-6*d,y);  //왼쪽눈썹
+    curve(x+6*d,y,x+8*d,y-10*d,x+13*d,y-10*d,x+15*d,y);  //오른쪽눈썹
+    fill(1,1,1);
+    ellipse(x,y+d,6*d,4.5*d);  //코
+    ellipse(x-10*d,y-4*d,1.1*d,2.6*d);  //왼쪽눈동자
+    ellipse(x+10*d,y-4*d,1.1*d,2.6*d);  //오른쪽눈동자
+    ellipse(x,y+7.5*d,15*d,5*d);  //입
+  }
+  void baggue(){  //속도 랜덤, 가장자리에서 튕기도록
+    x += vx; y += vy;
+    if(x<0) vx = -vx;
+    if(x>width) vx = -vx;
+    if(y<0) vy = -vy;
+    if(y>height) vy = -vy;
+  }
+  void mouse(){  //mouse에 따라 움직이는 오브젝트
+    x = mouseX;
+    y = mouseY;
+  }
+  void show(){};
+}
+
+class kumamonboy extends kumamon{
+  kumamonboy(int r){
+    super(r);
+  }
+  void show(){
+    kk();
+    fill(0,0,255);  //나비넥타이
+    float yt = y+15*d;
+    float dxy = 4*d;
+    triangle(x,yt,x-dxy,yt+dxy,x-dxy,yt-dxy);
+    triangle(x,yt,x+dxy,yt+dxy,x+dxy,yt-dxy);
+  }
+}
+class kumamongirl extends kumamon{
+  kumamongirl(int r){
+    super(r);
+  }
+  void show(){
+    kk();
+    fill(255,192,203);  //머리에 리본
+    float xt = x-10*d;
+    float yt = y-13*d;
+    float dxy = 5*d;
+    triangle(xt,yt,xt-dxy,yt,xt,yt+dxy);
+    triangle(xt,yt,xt+dxy,yt,xt,yt-dxy);
+  }
+}
